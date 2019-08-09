@@ -1,0 +1,13 @@
+fix refreshing when post request
+
+need to fix when map
+
+Phone lock
+
+way to stop sharing
+
+
+make site look nice
+
+js->flask transfer can be done without refresh
+using AJAX
