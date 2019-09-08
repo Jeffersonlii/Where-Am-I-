@@ -1,7 +1,7 @@
 from flask import Flask, session, redirect, url_for, escape, request, render_template, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import text
-import random, json
+import random, json, config
 
 app = Flask(__name__)
 app.secret_key=b'supersecret1'
@@ -49,7 +49,8 @@ def map(uniquePath):
     results = db.engine.execute(text(sql))
     for coord in results:
         return render_template('map.html',uniquePath=uniquePath,
-                                        long = coord[0],lat = coord[1]) 
+                                        long = coord[0],lat = coord[1],
+                                        key = config.MAP_KEY) 
     return render_template('map.html',uniquePath=-1) 
 
 if __name__ =="__main__":
