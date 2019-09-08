@@ -1,30 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Where Am I?</title>
+    <title>Where Am I? - Location</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-    <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
-    <script src="/assets/gmap3.js?body=1" type="text/javascript"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=
-    AIzaSyB3ouZaLZDvUpgUp3krxtbNvOUWM6Eow9U
-    &libraries=places&callback=initMap"
-    async defer></script>
-    <script src="http://code.jquery.com/jquery.min.js"></script>
-    <script type="text/javascript" src="../static/js/map.js"></script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
   </head>
-  <body> 
+  <body>
       <header>
           Where Am I? - share your live location through a single link!
-      </header>   
+      </header>  
+    <div id="map"></div>
+    <div> Blue marker = you <br> Red marker = sharer
+    </div>
+    <script>
+      var map;
+      function initMap() {
+        console.log("{{ uniquePath }}");
+        if("{{ uniquePath }}" == -1){//if no path found
+          document.getElementById('map').innerHTML = "NO USER FOUND";
+        }
+        else{//path found
+          map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: parseFloat("{{ lat }}"), lng: parseFloat("{{ long }}")},
+          zoom: 16
+          });
+          var targetmark = new google.maps.Marker({//the user
+			      position:  {lat: parseFloat("{{ lat }}"), lng: parseFloat("{{ long }}")},
+		      	map: map,
+		      	title: 'target found!'
+          });
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position){
+              var selfmark = new google.maps.Marker({//yourself
+			        position:  {lat: position.coords.latitude, lng: position.coords.longitude},
+		      	  map: map,
+              title: 'self found!',
+              icon: '../static/blue-dot.png'     
+              });
+            });
+          }
+          
+         }
         
-        <div id="map" style="width:100%;height:400px;"></div>
-
-
-
-        <script>
-            autoUpdate("{{ uniquePath }}");
-        </script>
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGJxIFlUZyXnRhSI83z_axMi_ZDHMQTJg
+    &callback=initMap"
+    async defer></script>
   </body>
-
 </html>

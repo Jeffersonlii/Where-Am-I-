@@ -30,7 +30,7 @@ def assignUniquePath():
     return uniquePath
 
 @app.route('/updateLocat',methods=['POST'])
-def updateLocat():#gets locatiopn data from js ajax and updates db
+def updateLocat():#gets locatiopn data from js ajax and updates db, updates in a set interval
     print("update")
     sql='''UPDATE locat 
         SET long = {}, lat = {}
@@ -42,15 +42,15 @@ def updateLocat():#gets locatiopn data from js ajax and updates db
 
 @app.route('/<path:uniquePath>',methods=['GET'])
 def map(uniquePath):
-    return render_template('map.html',uniquePath=uniquePath) 
-
-@app.route('/updateMap',methods=['GET'])
-def updateMap():
-        
-   result = db.engine.execute(text("select long,lat from locat where path = {}"
-        .format(request.args.get['path'])))
-   for i in result:
-        return jsonify({'lat':i['lat'],'long':i['long']})
+  
+    sql='''select long,lat from locat where
+    path = {}
+    '''.format(uniquePath)
+    results = db.engine.execute(text(sql))
+    for coord in results:
+        return render_template('map.html',uniquePath=uniquePath,
+                                        long = coord[0],lat = coord[1]) 
+    return render_template('map.html',uniquePath=-1) 
 
 if __name__ =="__main__":
     #SQLALCHEMY_TRACK_MODIFICATIONS = False

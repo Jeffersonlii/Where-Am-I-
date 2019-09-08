@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Where Am I?</title>
+    <title>Where Am I? - share </title>
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
     <script type="text/javascript" src="../static/js/index.js"></script>
   </head>
   <body> 
@@ -22,7 +22,7 @@
         </div>
 
         <script>
-        uniquePath("{{ uniquePath }}");
+        setUniquePath("{{ uniquePath }}");
         sendCoords("{{ uniquePath }}");
         </script>
   </body>

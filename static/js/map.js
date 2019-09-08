@@ -15,18 +15,11 @@ function initMap() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos;
-      $.getJSON({//get coord updates
-        url: "/updateMap",
-        data: { path: uniquePath },
-        success: function(data){
-            console.log(data.lat + " " + data.long);
-            pos = {
-                lat: data.lat,
-                lng: data.long
-              };
-        }
-      });
 
+      pos = {
+        lat: data.lat,
+        lng: data.long
+      };
       infoWindow.setPosition(pos);
       infoWindow.setContent('Location found.');
       infoWindow.open(map);

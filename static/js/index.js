@@ -1,4 +1,4 @@
-function uniquePath(a){
+function setUniquePath(a){
     var path = document.getElementById('urlBar');
     path.value = window.location + a;
 }

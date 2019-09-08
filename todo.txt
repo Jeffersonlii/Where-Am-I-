@@ -1,4 +1,8 @@
-fix refreshing when post request
+1specify location up time so we can del
+2draw a path between 2 points
+
+
+
 
 need to fix when map
 

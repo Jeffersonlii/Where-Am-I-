@@ -3,7 +3,7 @@ body{
 }
 header{
     text-align: center;
-    padding: 3%;
+    padding: 2%;
     font-size: 200%;
 }
 #container{
@@ -34,6 +34,6 @@ header{
     width: 30%;
     height: 50%;
 }
-#hiddenCoords{
-    
+#map{
+    height: 80%;
 }
