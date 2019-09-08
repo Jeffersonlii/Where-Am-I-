@@ -1,17 +1,13 @@
 from flask import Flask, session, redirect, url_for, escape, request, render_template, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import text
-from apscheduler.scheduler import Scheduler
-import random, json, config, atexit
+import random, json, config
 
 app = Flask(__name__)
 app.secret_key=b'supersecret1'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///locations.db'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0#avoids caching
 db = SQLAlchemy(app)
-
-cron = Scheduler(daemon=True)#create cron job thread for periodic deletion
-cron.start()
 
 @app.route('/', methods=['GET'])
 def main():
@@ -56,15 +52,6 @@ def map(uniquePath):#map code
                                         long = coord[0],lat = coord[1],
                                         key = config.MAP_KEY) 
     return render_template('map.html',uniquePath=-1) 
-
-@cron.interval_schedule(hours=1)
-def cronDeleter():#cron process for deleting at 1 hour interval
-    sql=''' DELETE FROM locat WHERE
-    time < DATETIME('NOW', '-2 hours') '''#delete all rows created > 2 hours ago
-    db.engine.execute(text(sql))
-
-# close cron job when web app is stopped
-atexit.register(lambda: cron.shutdown(wait=False))
 
 if __name__ =="__main__":
     #SQLALCHEMY_TRACK_MODIFICATIONS = False
