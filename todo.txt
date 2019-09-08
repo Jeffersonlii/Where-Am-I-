@@ -1,17 +1,3 @@
-1specify location up time so we can del
-2draw a path between 2 points
-
-
-
-
-need to fix when map
-
-Phone lock
-
-way to stop sharing
-
-
-make site look nice
-
-js->flask transfer can be done without refresh
-using AJAX
+1.specify location up time so we can del
+2.draw a path between 2 points
+3.make site look nice
