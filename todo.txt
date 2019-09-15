@@ -1,4 +1,2 @@
-1.add copy to clipboard button
-2.specify location up time so we can del
-3.draw a path between 2 points
+
 4.make site look nice

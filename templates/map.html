@@ -46,19 +46,22 @@
         if("{{ uniquePath }}" == -1){//if no path found
           document.getElementById('map').innerHTML = "NO USER FOUND";
         }
+        else if(parseFloat("{{ lat }}") == 0){
+          document.getElementById('map').innerHTML = "Sharer has not enabled location, refresh after location is enabled.";
+        } 
         else{//path found
           map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: parseFloat("{{ lat }}"), lng: parseFloat("{{ long }}")},
           zoom: 16
           });
-          var targetmark = new google.maps.Marker({//the user
+          var targetmark = new google.maps.Marker({//the user marker
 			      position:  {lat: parseFloat("{{ lat }}"), lng: parseFloat("{{ long }}")},
 		      	map: map,
 		      	title: 'target found!'
           });
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position){
-              var selfmark = new google.maps.Marker({//yourself
+              var selfmark = new google.maps.Marker({//yourself marker
 			        position:  {lat: position.coords.latitude, lng: position.coords.longitude},
 		      	  map: map,
               title: 'self found!',
@@ -70,7 +73,6 @@
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ key }}
-    &callback=initMap"
-    async defer></script>
+    &callback=initMap" async defer></script>
   </body>
 </html>
