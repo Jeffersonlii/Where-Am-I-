@@ -8,4 +8,4 @@ View config.py.example for schema
 
 - deletion of old db entries is automated by pythonanywhere, not in code
 
-Currently hosted at https://jeffersonlii.pythonanywhere.com/
+<b> Currently hosted at https://jeffersonlii.pythonanywhere.com/</b>
