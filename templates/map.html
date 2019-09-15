@@ -5,6 +5,8 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed&display=swap"
+     rel="stylesheet">
     <style>
       html, body {
         height: 100%;
@@ -16,11 +18,27 @@
   </head>
   <body>
       <header>
-          Where Am I? - share your live location through a single link!
+          
+          <a href="/">Where Am I? - A Location Sharer</a>
       </header>  
-    <div id="map"></div>
-    <div> Blue marker = you <br> Red marker = sharer
+    <div id="container">
+        <div id="box-help">
+            <p style="font-size: 120%;margin-top: 0px;"
+            >Showing current location of /{{ uniquePath }}<br></p>
+            <div>  <div style="color: lightblue">Blue marker = You</div>
+            <div style="color:	 #ff6666">Red marker = Sharer</div> </div>
+        </div>
+        <div id="map-box">
+            <div id="map"></div>
+        </div>
+        <footer>
+            <p>Created by : <a  target="_blank"  href="https://jeffersonlii.github.io/">Jefferson Li</a><br></p>
+            <p>Contact information: <a  target="_blank"  href="https://github.com/Jeffersonlii">github</a> 
+            <p>Site Repository : <a  target="_blank"  href=" https://github.com/Jeffersonlii/Where-Am-I-">/Where-Am-I-</a></p>
+            </p>
+        </footer>
     </div>
+
     <script>
       var map;
       function initMap() {

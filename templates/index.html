@@ -2,24 +2,38 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Where Am I? - share </title>
+    <title>Where Am I? - Share </title>
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed&display=swap"
+     rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <script type="text/javascript" src="../static/js/index.js"></script>
+    
   </head>
   <body> 
       <header>
-          Where Am I? - share your live location through a single link!
+          Where Am I? - A Location Sharer
       </header>   
         <div id="container">
             <div id="box-button">
-                    <input id="urlBar" type="text" name="uniqueURL" value="">
+                  <div style="flex-direction: row;text-align: center;" >
+                      <input id="urlBar" type="text" name="uniqueURL" value="">
+                      <button id='copy'  onclick="copyToBoard()">Copy</button>
+                  </div>
             </div>
-            <button id='copy'  onclick="copyToBoard()">Copy Link</button>
             <div id="box-help">
-                Share the your link to share your live location!<br>
+                Share the your unique link to share your current location!<br><br>
+                <b>Be sure to enable location!</b><br>
                 <b>link will be deleted in 2 hours</b>
             </div>
+            <footer>
+                <p>Created by : <a  target="_blank"  href="https://jeffersonlii.github.io/">Jefferson Li</a><br></p>
+                <p>Contact information: <a  target="_blank"  href="https://github.com/Jeffersonlii">github</a> 
+                <p>Site Repository : <a  target="_blank"  href=" https://github.com/Jeffersonlii/Where-Am-I-">/Where-Am-I-</a></p>
+                </p>
+            </footer>
         </div>
 
         <script>
