@@ -21,7 +21,7 @@ function success(position,uniquePath) {//execute on success
 }
 function sendCoords(uniquePath){//sending coords
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position){//watchPosition repeats
+        navigator.geolocation.watchPosition(function(position){
             success(position,uniquePath);
         },function(){},options);
     } else { 
