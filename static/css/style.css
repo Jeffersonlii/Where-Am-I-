@@ -51,7 +51,7 @@ header{
     text-align: center;
 }
 #map{
-    min-height: 1000px;
+    min-height: 100%;
     min-width: 100%;
 }
 
@@ -61,7 +61,7 @@ a:hover {color: greenyellow;text-decoration: none;}
 a:active {color: white;text-decoration: none;} 
 
 /*mobile*/
-@media only screen and (max-device-width: 500px) {
+@media only screen and (max-device-width: 950px) {
     #copy{
         height: 100%;
         width: 50%;
@@ -69,9 +69,10 @@ a:active {color: white;text-decoration: none;}
         padding: 5px;
         margin-top: 10px;
     }
+    
     #map-box{
         width: 97%;
-        height: 50%;
+        height: 500px;
         text-align: center;
     }
 }
