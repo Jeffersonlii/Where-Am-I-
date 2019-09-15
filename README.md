@@ -3,7 +3,9 @@ Site to share your location
 
 Send your custom link to any friend to  share your current location
 
-need a config file for google map to work
+- Need a config file for google map to work
 View config.py.example for schema
+
+- deletion of old db entries is automated by pythonanywhere, not in code
 
 Currently hosted at https://jeffersonlii.pythonanywhere.com/
