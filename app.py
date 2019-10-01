@@ -4,10 +4,8 @@ from sqlalchemy.sql import text
 import random, json, config
 
 app = Flask(__name__)
-app.secret_key=b'supersecret1'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///locations.db'
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0#avoids caching
-db = SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///locations.db'#connect db
+db = SQLAlchemy(app)#initiate db
 
 @app.route('/', methods=['GET'])
 def main():
@@ -53,7 +51,17 @@ def map(uniquePath):#map code
                                         key = config.MAP_KEY) 
     return render_template('map.html',uniquePath=-1) 
 
+@app.route('/updateCoord',methods=['POST'])
+def updateCoord(uniquePath):
+    sql='''select long,lat from locat where
+    path = {}
+    '''.format(uniquePath)
+    results = db.engine.execute(text(sql))
+    for coord in results:
+        return  jsonify( {'long' : coord[0], 'lat' : coord[1]} )                           
+    return -1
+
+
 if __name__ =="__main__":
-    #SQLALCHEMY_TRACK_MODIFICATIONS = False
     app.run(host="localhost",port=5000,debug=True)
 

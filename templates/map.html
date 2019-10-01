@@ -69,6 +69,11 @@
               });
             });
           }
+          setInterval(function(){//updates users map location every 2 seconds
+            $.post("/updateCoord",{path : "{{ uniquePath }}"},function(newCoordRsp){
+            targetmark.position = { lat: parseFloat(newCoordRsp.lat), lng : parseFloat(newCoordRsp.long) };
+          })
+          }, 2000);
          }
          
 
