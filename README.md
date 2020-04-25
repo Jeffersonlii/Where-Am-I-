@@ -10,4 +10,4 @@ View config.py.example for schema
 
 <b> Currently hosted at https://jeffersonlii.pythonanywhere.com/</b>
 
-Hosting expires 15 December 2019.
+Hosting expires Saturday 25 July 2020.
